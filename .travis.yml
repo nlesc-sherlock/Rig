@@ -5,6 +5,8 @@ addons:
   sauce_connect: true
   code_climate:
     repo_token:
+before_install:
+  - gem install compass
 install:
   - 'npm install'
   - 'npm install -g bower grunt-cli'
