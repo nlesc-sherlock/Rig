@@ -21,7 +21,7 @@
       'rigApp.mainScreen'
     ])
     .run(function(DataService){
-      DataService.init();
+        DataService.init();
     });
 
   angular.module('rigApp.templates', []);
