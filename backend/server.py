@@ -29,7 +29,8 @@ def hello():
 
 @app.route('/records/<input>/<int:start>/<int:end>')
 def records(input, start, end):
-    return VARS[input][start:end].to_json()
+    return jsonify({"columns": list(VARS[input].columns),
+                    "data": VARS[input][start:end].to_dict()})
 
 
 @app.route('/split/<col>/<input>/<output>')
