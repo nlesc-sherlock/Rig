@@ -19,6 +19,18 @@ CORS(app)
 def hello():
     return jsonify({'#records': data.shape[0]})
 
+
+@app.route('/query')
+@cross_origin(supports_credentials=True)
+def query():
+    records = []
+    for idx, row in data.head(10).iterrows():
+        d = dict(row)
+        d['date'] = str(d['date'])
+        records.append(d)
+    return jsonify({'records': records})
+
+
 if __name__ == '__main__':
     conf = SafeConfigParser(allow_no_value=True)
 
