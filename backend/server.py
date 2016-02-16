@@ -46,6 +46,7 @@ def vars():
 @app.route('/query')
 @cross_origin(supports_credentials=True)
 def query():
+    """Return the 10 first records."""
     records = []
     for idx, row in VARS['original'].head(10).iterrows():
         d = dict(row)
