@@ -34,6 +34,11 @@ def split(col, input, output):
     return jsonify({"#records": VARS[output].shape[0]})
 
 
+@app.route('/vars')
+def vars():
+    return jsonify({"vars": VARS.keys()})
+
+
 if __name__ == '__main__':
     conf = SafeConfigParser(allow_no_value=True)
 
