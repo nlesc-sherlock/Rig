@@ -23,7 +23,8 @@ VARS = {}
 @app.route('/')
 @cross_origin(supports_credentials=True)
 def hello():
-    return jsonify({'#records': VARS['original'].shape[0]})
+    return jsonify({ 'columns':['#records'],
+                     'data':[{'#records': VARS['original'].shape[0]}]})
 
 
 @app.route('/records/<input>/<int:start>/<int:end>')
