@@ -24,7 +24,7 @@
   <!-- Add your site or application content here -->
   <h1>Sherlock Rig</h1>
   <p>Something here now.</p>
-
+  <rig-main-screen></rig-main-screen>
   <!-- build:js(.) scripts/oldieshim.js -->
   <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -49,6 +49,10 @@
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
+  <script src="scripts/utils/messagebus.service.js"></script>
+  <script src="scripts/dataService/dataService.service.js"></script>
+  <script src="scripts/mainScreen/mainScreen.controller.js"></script>
+  <script src="scripts/mainScreen/mainScreen.directive.js"></script>
 
   <!-- endbuild -->
 </body>

@@ -16,13 +16,13 @@
       'ngAnimate',
       'ngSanitize',
       'ngTouch',
-      'ui.bootstrap'
-    ])
-    .run(function(SitesService, DrivemapService) {
-      DrivemapService.load();
-      SitesService.load();
-    });
+      'ui.bootstrap',
+      'rigApp.dataService',
+      'rigApp.mainScreen'
+    ]);
 
   angular.module('rigApp.templates', []);
   angular.module('rigApp.utils', ['rigApp.templates']);
+  angular.module('rigApp.dataService', ['rigApp.utils']);
+  angular.module('rigApp.mainScreen', ['rigApp.utils']);
 })();
