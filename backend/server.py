@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask.ext.cors import CORS, cross_origin
 import pandas as pd
 import codecs
 import os
@@ -10,9 +11,11 @@ except:
     from configparser import SafeConfigParser, Error
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
+@cross_origin(supports_credentials=True)
 def hello():
     return jsonify({'#records': data.shape[0]})
 
