@@ -43,16 +43,16 @@ def vars():
     return jsonify({"vars": VARS.keys()})
 
 
-
 @app.route('/query')
 @cross_origin(supports_credentials=True)
 def query():
     records = []
-    for idx, row in data.head(10).iterrows():
+    for idx, row in VARS['original'].head(10).iterrows():
         d = dict(row)
         d['date'] = str(d['date'])
         records.append(d)
-    return jsonify({'records': records})
+    return jsonify({'columns': ['records'],
+                    'data': [{'records': records}]})
 
 
 if __name__ == '__main__':
