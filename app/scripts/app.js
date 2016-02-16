@@ -19,7 +19,10 @@
       'ui.bootstrap',
       'rigApp.dataService',
       'rigApp.mainScreen'
-    ]);
+    ])
+    .run(function(DataService){
+      DataService.init();
+    });
 
   angular.module('rigApp.templates', []);
   angular.module('rigApp.utils', ['rigApp.templates']);

@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  function MainScreenController(Messagebus,$window) {
+  function MainScreenController(Messagebus) {
     Messagebus.subscribe('dataUpdate',function(event,data) {
-      $window.alert(data);
+      console.log(data);
     });
   }
   angular.module('rigApp.mainScreen')
