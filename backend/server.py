@@ -34,6 +34,12 @@ def records(input, start, end):
                      "data": [ row.to_dict() for (_,row) in VARS[input][start:end].iterrows() ]
                     })
 
+@app.route('/sample/<int:nrows>/<input>/<output>')
+def sample(nrows, input, output):
+    VARS[output] = VARS[input].head(nrows)
+    return jsonify({"#records": VARS[output].shape[0]})
+
+
 @app.route('/split/<col>/<input>/<output>')
 def split(col, input, output):
     VARS[output] = split_on_column(VARS[input], col)

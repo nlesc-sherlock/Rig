@@ -7,7 +7,7 @@ html, body {
 #progress-bar {
 	width: 100%;
 	height: 2%;
-	background-color: cyan;
+	background-color: #00ADEF;
 }
 
 #rig-logo {
@@ -22,8 +22,11 @@ html, body {
 #nlesc-logo {
 	width: 50%;
 	height: 100%;
-	font-size: large;
-	font-weight: bold;
+}
+
+#nlesc-icon {
+	height: 90%;
+	border: 2px solid white;
 }
 
 #search-box {
