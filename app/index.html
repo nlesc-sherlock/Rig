@@ -23,9 +23,31 @@
     <![endif]-->
 
   <!-- Add your site or application content here -->
-  <h1>Sherlock Rig</h1>
-  <img src="images/noun_95045_cc.png" class="rig-icon"/>
-  <rig-main-screen></rig-main-screen>
+
+  <div id="mainx">
+    <div id="progress-bar">progress bar</div>
+    <div id="main-body">
+      <div id="left-bar">
+        <div id="rig-logo"><img src="images/noun_95045_cc.png" id="rig-icon"/></div>
+        <div id="workflow">workflow</div>
+      </div>
+      <div id="main-bar">
+        <div id="main-top">
+          <div id="main-left-bar">
+            <div id="main-header">
+              <div id="nlesc-logo">Sherlock Rig</div>
+              <div id="search-box">search box</div>
+            </div>
+            <div id="data-table"><rig-main-screen></rig-main-screen></div>
+          </div>
+          <div id="main-right-bar">
+            <div id="message-log">message log</div>
+          </div>
+        </div>
+        <div id="blocks">blocks</div>
+      </div>
+    </div>
+  </div>
   <!-- build:js(.) scripts/oldieshim.js -->
   <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>

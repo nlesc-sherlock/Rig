@@ -1,3 +1,133 @@
-.rig-icon {
-	width: 100px;
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+/* widgets */
+#progress-bar {
+	width: 100%;
+	height: 2%;
+	background-color: yellow;
+}
+
+#rig-logo {
+	background-color: #00f;
+	width: auto;
+	height: auto;
+}
+
+#rig-icon {
+	width: 90%;
+}
+
+#nlesc-logo {
+	width: 50%;
+	height: 100%;
+	background-color: #0a0;
+}
+
+#search-box {
+	width: 50%;
+	height: 100%;
+	background-color: #0f0;
+}
+
+#workflow {
+	width: 100%;
+	height: 80%;
+	background-color: #009;
+}
+
+#data-table {
+	width: 100%;
+	height: 100%;
+	background-color: #090;
+}
+
+#message-log {
+	width: 100%;
+}
+
+#blocks {
+	width: 100%;
+	height: 20%;
+	background-color: #a00;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+/* layout containers */
+#mainx {
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+}
+
+#main-body {
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+#left-bar {
+	background-color: blue;
+	width: 15%;
+	height: 100%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+}
+
+#main-bar {
+	background-color: red;
+	width: 85%;
+	height: 98%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+}
+
+#main-top {
+	background-color: orange;
+	width: 100%;
+	height: 80%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: space-between; /* Safari */
+	flex-direction: space-between;
+}
+
+#main-left-bar {
+	background-color: green;
+	height: 100%;
+	width: 90%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+}
+
+#main-right-bar {
+	width: 10%;
+	height: 100%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column-reverse; /* Safari */
+	flex-direction: column-reverse;
+}
+
+#main-header {
+	background-color: purple;
+	width: 100%;
+	height: 10%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
 }
