@@ -10,6 +10,10 @@
       }.bind(this));
     }.bind(this));
 
+    this.clickTableHeader = function(columnName) {
+      Messagebus.publish('clickTableHeader',columnName);
+    };
+
   }
   angular.module('rigApp.mainScreen')
     .controller('MainScreenController', MainScreenController);

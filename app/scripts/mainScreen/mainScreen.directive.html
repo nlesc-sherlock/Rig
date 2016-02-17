@@ -1,6 +1,6 @@
 <div class="maintable">
 <table class="table table-striped table-bordered table-hover">
-	<tr><th ng-repeat="col in ms.data.columns" class="maintable-cell">{{ col }}</th></tr>
+	<tr><th ng-repeat="col in ms.data.columns" class="maintable-cell" ng-click="ms.clickTableHeader(col)">{{ col }}</th></tr>
 	<tr ng-repeat="item in ms.data.data">
 		<td ng-repeat="(key,value) in item" class="maintable-cell">{{ value }}</td>
 	</tr>
