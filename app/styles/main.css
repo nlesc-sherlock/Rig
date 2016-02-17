@@ -7,11 +7,10 @@ html, body {
 #progress-bar {
 	width: 100%;
 	height: 2%;
-	background-color: yellow;
+	background-color: cyan;
 }
 
 #rig-logo {
-	background-color: #00f;
 	width: auto;
 	height: auto;
 }
@@ -23,25 +22,25 @@ html, body {
 #nlesc-logo {
 	width: 50%;
 	height: 100%;
-	background-color: #0a0;
+	font-size: large;
+	font-weight: bold;
 }
 
 #search-box {
 	width: 50%;
 	height: 100%;
-	background-color: #0f0;
 }
 
 #workflow {
 	width: 100%;
 	height: 80%;
-	background-color: #009;
 }
 
 #data-table {
 	width: 100%;
-	height: 100%;
-	background-color: #090;
+	height: 90%;
+	overflow-y: scroll;
+	overflow-x: scroll;
 }
 
 #message-log {
@@ -51,7 +50,6 @@ html, body {
 #blocks {
 	width: 100%;
 	height: 20%;
-	background-color: #a00;
 	display: -webkit-flex; /* Safari */
 	display: flex;
 }
@@ -60,7 +58,6 @@ html, body {
 #mainx {
 	width: 100%;
 	height: 100%;
-	background-color: gray;
 	display: -webkit-flex; /* Safari */
 	display: flex;
 	-webkit-flex-direction: column; /* Safari */
@@ -70,13 +67,11 @@ html, body {
 #main-body {
 	width: 100%;
 	height: 100%;
-	background-color: gray;
 	display: -webkit-flex; /* Safari */
 	display: flex;
 }
 
 #left-bar {
-	background-color: blue;
 	width: 15%;
 	height: 100%;
 	display: -webkit-flex; /* Safari */
@@ -86,7 +81,6 @@ html, body {
 }
 
 #main-bar {
-	background-color: red;
 	width: 85%;
 	height: 98%;
 	display: -webkit-flex; /* Safari */
@@ -96,7 +90,6 @@ html, body {
 }
 
 #main-top {
-	background-color: orange;
 	width: 100%;
 	height: 80%;
 	display: -webkit-flex; /* Safari */
@@ -106,7 +99,6 @@ html, body {
 }
 
 #main-left-bar {
-	background-color: green;
 	height: 100%;
 	width: 90%;
 	display: -webkit-flex; /* Safari */
@@ -125,9 +117,13 @@ html, body {
 }
 
 #main-header {
-	background-color: purple;
 	width: 100%;
 	height: 10%;
 	display: -webkit-flex; /* Safari */
 	display: flex;
+}
+
+.maintable-cell {
+	max-width: 100%;
+	white-space: nowrap;
 }

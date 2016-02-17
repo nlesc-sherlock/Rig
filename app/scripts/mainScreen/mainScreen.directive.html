@@ -1,8 +1,8 @@
 <div class="maintable">
-<table>
-	<tr><th ng-repeat="col in ms.data.columns">{{ col }}</th></tr>
+<table class="table table-striped table-bordered table-hover">
+	<tr><th ng-repeat="col in ms.data.columns" class="maintable-cell">{{ col }}</th></tr>
 	<tr ng-repeat="item in ms.data.data">
-		<td ng-repeat="(key,value) in item">{{ value }}</td>
+		<td ng-repeat="(key,value) in item" class="maintable-cell">{{ value }}</td>
 	</tr>
 </table>
 </div>

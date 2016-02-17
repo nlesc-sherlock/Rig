@@ -28,10 +28,11 @@ def hello():
 
 
 @app.route('/records/<input>/<int:start>/<int:end>')
+@cross_origin(supports_credentials=True)
 def records(input, start, end):
-    return jsonify({"columns": list(VARS[input].columns),
-                    "data": VARS[input][start:end].to_dict()})
-
+    return jsonify({ "columns": list(VARS[input].columns),
+                     "data": [ row.to_dict() for (_,row) in VARS[input][start:end].iterrows() ]
+                    })
 
 @app.route('/split/<col>/<input>/<output>')
 def split(col, input, output):
