@@ -1,6 +1,6 @@
 <div class="blocksbar">
 	<div ng-repeat="sb in bl.suggestedBlocks" class="block">
 		<div class="block-title">{{ sb.operation }} {{ sb.parameter }}</div>
-		<button>run</button>
+		<button ng-click="bl.planBlock(sb)">plan</button>
 	</div>
 </div>
