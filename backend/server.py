@@ -71,7 +71,7 @@ def query():
 def suggestions():
     """Return task suggestions based on task name and user interaction.
     """
-    print request.values
+    print request.values.keys()
 
     with codecs.open(os.path.join(APP_STATIC, 'suggestions.json'), 'rb', encoding='utf-8') as f:
         suggestions = json.load(f)
@@ -82,6 +82,13 @@ def suggestions():
     else:
         top_of_stack = request.values.get('topOfStack')
         interaction = request.values.get('mainScreenInteraction')
+
+    data = json.loads(request.data)
+    print data
+
+    for s in suggestions:
+        s['topOfStack'] = data.get('topOfStack')
+        s['mainScreenInteraction'] = data.get('mainScreenInteraction')
 
     if not task_name == 'all':
         suggestions = [s for s in suggestions if task_name == s['in']]

@@ -23,19 +23,21 @@
     }.bind(this);
 
     this.getSuggestions = function(topOfStack,mainScreenInteraction) {
-      Messagebus.publish('newSuggestions',$http.post(encodeURI(this.backendURL + this.suggestionsPath)),
+      Messagebus.publish('newSuggestions',$http.post(encodeURI(this.backendURL + this.suggestionsPath),
         {
           'topOfStack': topOfStack,
           'mainScreenInteraction': mainScreenInteraction
-        });
+        }));
     }.bind(this);
 
     Messagebus.subscribe('mainScreenInteraction',function(event,interactionSpec) {
+      console.log(interactionSpec);
       this.lastMainScreenInteraction = interactionSpec;
       this.getSuggestions(this.currentTopOfStack,interactionSpec);
     }.bind(this));
     
     Messagebus.subscribe('topOfStack',function(event,block) {
+      console.log(block);
       this.currentTopOfStack = block;
       this.getSuggestions(this.currentTopOfStack,this.lastMainScreenInteraction);
     }.bind(this));
