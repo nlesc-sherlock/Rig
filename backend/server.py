@@ -67,17 +67,22 @@ def query():
 
 
 @app.route('/suggestions', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def suggestions():
     """Return task suggestions based on task name and user interaction.
     """
+    print request.values
+    print request.args
+    print request.form
+    print request.values.keys()
     top_of_stack = request.values.get('topOfStack')
     interaction = request.values.get('mainScreenInteraction')
 
     with codecs.open(os.path.join(APP_STATIC, 'suggestions.json'), 'rb', encoding='utf-8') as f:
         suggestions = json.load(f)
 
-    interaction_type = interaction.get('type')
-    task_name = top_of_stack.get('type')
+    interaction_type = 'all'
+    task_name = 'source'
 
     if not task_name == 'all':
         suggestions = [s for s in suggestions if task_name == s['in']]
