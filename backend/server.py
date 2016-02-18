@@ -72,23 +72,22 @@ def suggestions():
     """Return task suggestions based on task name and user interaction.
     """
     print request.values
-    print request.args
-    print request.form
-    print request.values.keys()
-    top_of_stack = request.values.get('topOfStack')
-    interaction = request.values.get('mainScreenInteraction')
 
     with codecs.open(os.path.join(APP_STATIC, 'suggestions.json'), 'rb', encoding='utf-8') as f:
         suggestions = json.load(f)
 
-    interaction_type = 'all'
-    task_name = 'source'
+    if request.values.keys() == []:
+        interaction_type = None
+        task_name = 'source'
+    else:
+        top_of_stack = request.values.get('topOfStack')
+        interaction = request.values.get('mainScreenInteraction')
 
     if not task_name == 'all':
         suggestions = [s for s in suggestions if task_name == s['in']]
 
-    if interaction is not None:
-        suggestions = [s for s in suggestions if interaction in s['interaction']]
+    if interaction_type is not None:
+        suggestions = [s for s in suggestions if interaction_type in s['interaction']]
 
     return jsonify({'suggestions': suggestions})
 
