@@ -35,6 +35,8 @@ class Compose(object):
 
         self.f = f
         self.g = g
+        self.intype = f.intype
+        self.outtype = g.outtype
 
     def __call__(self, input):
         return self.g(self.f(input))
@@ -46,11 +48,6 @@ def count_unique(data):
     return seen_once.reduceByKey(operator.add)
 
 
-@action(("str",), "str")
-def flatten(data):
-    return data.flatMap(list)
-
-
-@action("rawstr", ("str",))
+@action("rawstr", "str")
 def tokenize(data):
-    return data.map(lambda s: s.split())
+    return data.map(lambda s: s.split()).flatMap(list)
