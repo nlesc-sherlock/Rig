@@ -2,15 +2,20 @@
   'use strict';
 
   function BlocksController(Messagebus, $scope) {
-    this.suggestedBlocks = [];
+    this.suggestedBlocks = []; /* output of the DataService suggestions */
 
-    Messagebus.subscribe('mainScreenInteraction',function(event,colHeader) {
-        console.log('blocks sais ' + colHeader);
-        this.suggestedBlocks = [
-          {'operation':'split','parameter':colHeader},
-          {'operation':'sample','parameter':100}
-        ];
+    this.planBlock = function(block) {
+      console.log('planning the block');
+      console.log(block);
+      Messagebus.publish('planBlock',block);
+    };
+
+    Messagebus.subscribe('newSuggestions',function(event,suggestions) {
+      suggestions.then(function(sugg){ 
+        this.suggestedBlocks = sugg.data.suggestions;
+      }.bind(this));
     }.bind(this));
+    
   }
   angular.module('rigApp.blocks')
     .controller('BlocksController', BlocksController);

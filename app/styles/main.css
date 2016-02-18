@@ -45,6 +45,12 @@ html, body {
 		#EEF6FF 10px,
 		#EEF6FF 20px
 	);
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+	overflow-y: scroll;
+	/*overflow-x: scroll;*/
 }
 
 #data-table {
@@ -154,6 +160,13 @@ html, body {
 	margin: 10px;
 }
 
+.workflow-block {
+	background-color: #CCEEFF;
+	border: 1px #00ADEF dotted;
+	padding: 5px;
+	margin: 5px;
+}
+
 .block-title {
 	display: block;
 	font-weight: bold;
@@ -165,4 +178,27 @@ html, body {
 
 .table-hover .selected {
 	background-color: #FF93A2 !important
+}
+.workflowbar {
+	width: 100%;
+}
+
+.workflow-block {
+	width: 95%;
+}
+
+.workflow-block-title {
+	display: inline-block;
+	margin: 5%;
+}
+
+.workflow-block > button {
+	float: right;
+}
+
+.run-workflow {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	width: 100%;
 }
