@@ -2,7 +2,7 @@
   'use strict';
 
   function DataService($q, $http, $timeout, Messagebus) { //, AuthenticationService) {
-    this.backendURL = 'http://localhost:5000';
+    this.backendURL = 'http://145.100.116.242:5000';
 
     this.exampleQuery = '/records/original/0/100';
     this.suggestionsPath = '/suggestions';

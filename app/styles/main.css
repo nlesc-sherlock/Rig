@@ -172,6 +172,13 @@ html, body {
 	font-weight: bold;
 }
 
+.selected{
+  background-color: red;
+}
+
+.table-hover .selected {
+	background-color: #FF93A2 !important
+}
 .workflowbar {
 	width: 100%;
 }
