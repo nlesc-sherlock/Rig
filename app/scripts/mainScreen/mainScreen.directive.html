@@ -3,7 +3,7 @@
 	<tr><th>#</th><th ng-repeat="col in ms.data.columns" class="maintable-cell" ng-click="ms.clickTableHeader(col)">{{ col }}</th></tr>
 	<tr ng-repeat="item in ms.data.data">
 		<td> <input type="checkbox" ng-model="ms.rowschecked[$index].selected" ng-change="ms.clickTableRow($index)"> </input> </td>
-		<td ng-repeat="(key,value) in item" class="maintable-cell" ng-class="{selected: ms.checkedrows[$parent.$index].selected}"
+		<td ng-repeat="(key,value) in item" class="maintable-cell" ng-class="{selected: ms.rowschecked[$parent.$index].selected}"
 		    ng-mouseup="ms.selectTableTextCell(key,value)" ng-dblclick="ms.doubleClickTableCell(key,value)"> {{ value }}</td>
 	</tr>
 </table>

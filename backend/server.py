@@ -123,5 +123,5 @@ if __name__ == '__main__':
     VARS['original'] = pd.concat(dfs)
 
     print('Finished loading data')
-
-    app.run(debug=True)
+    
+    app.run(host='0.0.0.0', debug=True)
