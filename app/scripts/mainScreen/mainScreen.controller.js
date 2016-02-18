@@ -11,7 +11,7 @@
     }.bind(this));
 
     this.clickTableHeader = function(columnName) {
-      Messagebus.publish('clickTableHeader',columnName);
+      Messagebus.publish('mainScreenInteraction',columnName);
     };
 
   }
