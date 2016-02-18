@@ -6,36 +6,32 @@ action_by_intype = {}
 _all_actions = set()
 
 
-class Action(object):
-    def __init__(self, name, func, inbasetype, functype, outbasetype):
-        if name in _all_actions:
+class action(object):
+    def __init__(self, intype, outtype):
+        self.intype = intype
+        self.outtype = outtype
+
+    def __call__(self, func):
+        if func.__name__ in _all_actions:
             raise RuntimeError("an action called %r was already registered"
-                               % name)
-        _all_actions.add(name)
+                               % func.__name___)
+        _all_actions.add(func.__name__)
 
-        self.name = name
-        self.func = func
-        self.functype = functype
-        self.inbasetype = inbasetype
-        self.outbasetype = outbasetype
+        action_by_intype.setdefault(self.intype, []).append(func)
 
-        action_by_intype.setdefault(self.inbasetype, []).append(self)
+        def f(*args, **kwargs):
+            return func(*args, **kwargs)
+        f.intype = self.intype
+        f.outtype = self.outtype
 
-    def __call__(self, input):
-        return getattr(input, self.functype)(self.func)
-
-    def outtype(self):
-        if self.functype == "map":
-            return self.outbasetype
-        if self.functype == "flatMap":
-            return (self.outbasetype,)
+        return f
 
 
 class Compose(object):
     def __init__(self, f, g):
-        if f.outtype() != g.inbasetype:
+        if f.outtype != g.intype:
             raise TypeError("input type %r doesn't match required type %r"
-                            % (f.outtype(), g.inbasetype))
+                            % (f.outtype, g.intype))
 
         self.f = f
         self.g = g
@@ -44,7 +40,17 @@ class Compose(object):
         return self.g(self.f(input))
 
 
-flatten = Action("flatten", list, "str", "flatMap", "str")
+@action("str", "int")
+def count_unique(data):
+    seen_once = data.map(lambda x: (x, 1))
+    return seen_once.reduceByKey(operator.add)
 
-tokenize = Action("tokenize", operator.methodcaller('split'),
-                  "rawstr", "map", "str")
+
+@action(("str",), "str")
+def flatten(data):
+    return data.flatMap(list)
+
+
+@action("rawstr", ("str",))
+def tokenize(data):
+    return data.map(lambda s: s.split())
