@@ -7,11 +7,11 @@
   {
     "in": "source",
     "conditions": ["full_text"],
-    "out": "tokenize"
+    "out": ["tokenize"]
   },
   {
     "in": "source",
     "conditions": [],
-    "out": "sample"
+    "out": ["sample"]
   }
 ]
