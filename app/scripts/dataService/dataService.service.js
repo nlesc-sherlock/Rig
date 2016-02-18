@@ -5,7 +5,7 @@
     this.backendURL = 'http://localhost:5000';
 
     this.exampleQuery = '/records/original/0/100';
-    this.suggestionsPath = '/suggestions/';
+    this.suggestionsPath = '/suggestions';
 
     this.currentTopOfStack = {};
     this.lastMainScreenInteraction = {};
