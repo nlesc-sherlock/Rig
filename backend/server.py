@@ -4,6 +4,7 @@ import pandas as pd
 import codecs
 import os
 import sys
+import json
 
 try:
     from ConfigParser import SafeConfigParser, Error
@@ -11,6 +12,7 @@ except:
     from configparser import SafeConfigParser, Error
 
 from data import split_on_column
+from settings import APP_STATIC
 
 app = Flask(__name__)
 CORS(app)
@@ -62,6 +64,19 @@ def query():
         records.append(d)
     return jsonify({'columns': ['records'],
                     'data': [{'records': records}]})
+
+
+@app.route('/suggestions/', defaults={'task_name': 'all'})
+@app.route('/suggestions/<task_name>')
+def suggestions(task_name):
+    """Return task suggestions based on"""
+    with codecs.open(os.path.join(APP_STATIC, 'suggestions.json'), 'rb', encoding='utf-8') as f:
+        suggestions = json.load(f)
+
+    if not task_name == 'all':
+        suggestions = [s for s in suggestions if s['in'] == task_name]
+
+    return jsonify({'suggestions': suggestions})
 
 
 if __name__ == '__main__':

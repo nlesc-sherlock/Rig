@@ -1,0 +1,17 @@
+[
+  {
+    "in": "tokenize",
+    "conditions": [],
+    "out": ["count_unique"]
+  },
+  {
+    "in": "source",
+    "conditions": ["full_text"],
+    "out": "tokenize"
+  },
+  {
+    "in": "source",
+    "conditions": [],
+    "out": "sample"
+  }
+]
