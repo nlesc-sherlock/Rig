@@ -17,10 +17,6 @@
       }.bind(this));
     }.bind(this));
 
-    this.setSelected = function (idSelectedRow) {
-       this.idSelectedRow = idSelectedRow;
-    };
-
     this.clickTableHeader = function(columnName) {
       Messagebus.publish('mainScreenInteraction',{'type':'column-header',
                                                   'value':columnName});
@@ -68,8 +64,6 @@
     };
 
     this.clickTableRow = function(rowIndex) {
-      //this.setSelected(rowIndex);
-      // this.rowschecked[rowIndex].selected = !this.rowschecked[rowIndex].selected;
       var selectedRows = [];
       this.rowschecked.forEach(function(element){
         if (element.selected) {
