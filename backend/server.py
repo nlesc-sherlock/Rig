@@ -87,7 +87,7 @@ def suggestions():
     print data
 
     for s in suggestions:
-        s['topOfStack'] = data.get('topOfStack')
+#        s['topOfStack'] = data.get('topOfStack')
         s['mainScreenInteraction'] = data.get('mainScreenInteraction')
 
     if not task_name == 'all':

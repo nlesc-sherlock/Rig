@@ -26,8 +26,8 @@
     this.getSuggestions = function(topOfStack,mainScreenInteraction) {
       Messagebus.publish('newSuggestions',$http.post(encodeURI(this.backendURL + this.suggestionsPath),
         {
-          'topOfStack': topOfStack,
-          'mainScreenInteraction': mainScreenInteraction
+          'topOfStack': this.currentTopOfStack,
+          'mainScreenInteraction': this.lastMainScreenInteraction
         }));
     }.bind(this);
 
