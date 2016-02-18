@@ -87,13 +87,15 @@ def suggestions():
     print data
 
     for s in suggestions:
-        s['topOfStack'] = data.get('topOfStack')
+#        s['topOfStack'] = data.get('topOfStack')
         s['mainScreenInteraction'] = data.get('mainScreenInteraction')
 
     if not task_name == 'all':
         suggestions = [s for s in suggestions if task_name == s['in']]
 
     if interaction_type is not None:
+#        suggestions = [s for s in suggestions if s['interaction'] == []]
+#    else:
         suggestions = [s for s in suggestions if interaction_type in s['interaction']]
 
     return jsonify({'suggestions': suggestions})

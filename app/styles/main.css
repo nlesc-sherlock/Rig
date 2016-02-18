@@ -203,3 +203,8 @@ html, body {
 	font-weight: bold;
 	width: 100%;
 }
+
+.parameters {
+	font-size: small;
+	font-weight: normal;
+}
