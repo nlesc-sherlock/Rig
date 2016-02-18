@@ -1,9 +1,10 @@
 <div class="maintable">
-<table class="table table-striped table-bordered table-hover">
+<table class="table table-bordered table-condensed table-hover">
 	<tr><th>#</th><th ng-repeat="col in ms.data.columns" class="maintable-cell" ng-click="ms.clickTableHeader(col)">{{ col }}</th></tr>
 	<tr ng-repeat="item in ms.data.data">
-		<td ng-click="ms.clickTableRow($index)"> {{$index}} </td>
-		<td ng-repeat="(key,value) in item" class="maintable-cell"  ng-mouseup="ms.selectTableTextCell(key,value)"> {{ value }}</td>
+		<td> <input type="checkbox" ng-model="ms.rowschecked[$index].selected" ng-change="ms.clickTableRow($index)"> </input> </td>
+		<td ng-repeat="(key,value) in item" class="maintable-cell" ng-class="{selected: ms.checkedrows[$parent.$index].selected}"
+		    ng-mouseup="ms.selectTableTextCell(key,value)" ng-dblclick="ms.doubleClickTableCell(key,value)"> {{ value }}</td>
 	</tr>
 </table>
 </div>
