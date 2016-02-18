@@ -1,16 +1,19 @@
 [
   {
     "in": "tokenize",
+    "interaction": [],
     "conditions": [],
     "out": ["count_unique"]
   },
   {
     "in": "source",
+    "interaction": ["column-header"],
     "conditions": ["full_text"],
     "out": ["tokenize"]
   },
   {
     "in": "source",
+    "interaction": [],
     "conditions": [],
     "out": ["sample"]
   }
