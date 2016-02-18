@@ -158,3 +158,11 @@ html, body {
 	display: block;
 	font-weight: bold;
 }
+
+.selected{
+  background-color: red;
+}
+
+.table-hover .selected {
+	background-color: #FF93A2 !important
+}
