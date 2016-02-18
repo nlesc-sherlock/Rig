@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask.ext.cors import CORS, cross_origin
 import pandas as pd
 import codecs
@@ -66,15 +66,24 @@ def query():
                     'data': [{'records': records}]})
 
 
-@app.route('/suggestions/', defaults={'task_name': 'all'})
-@app.route('/suggestions/<task_name>')
-def suggestions(task_name):
-    """Return task suggestions based on"""
+@app.route('/suggestions', methods=['POST'])
+def suggestions():
+    """Return task suggestions based on task name and user interaction.
+    """
+    top_of_stack = request.values.get('topOfStack')
+    interaction = request.values.get('mainScreenInteraction')
+
     with codecs.open(os.path.join(APP_STATIC, 'suggestions.json'), 'rb', encoding='utf-8') as f:
         suggestions = json.load(f)
 
+    interaction_type = interaction.get('type')
+    task_name = top_of_stack.get('type')
+
     if not task_name == 'all':
-        suggestions = [s for s in suggestions if s['in'] == task_name]
+        suggestions = [s for s in suggestions if task_name == s['in']]
+
+    if interaction is not None:
+        suggestions = [s for s in suggestions if interaction in s['interaction']]
 
     return jsonify({'suggestions': suggestions})
 
