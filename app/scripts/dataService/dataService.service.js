@@ -2,9 +2,9 @@
   'use strict';
 
   function DataService($q, $http, $timeout, Messagebus) { //, AuthenticationService) {
-    this.backendURL = 'http://145.100.116.242:5000';
+    this.backendURL = 'http://localhost:5000';
 
-    this.exampleQuery = '/records/original/0/10';
+    this.exampleQuery = '/records/original/0/100';
 
     var deferred = $q.defer();
     this.ready = deferred.promise;
