@@ -19,7 +19,8 @@
       'ui.bootstrap',
       'rigApp.dataService',
       'rigApp.mainScreen',
-      'rigApp.blocks'
+      'rigApp.blocks',
+      'rigApp.workflow'
     ])
     .run(function(DataService){
         DataService.init();
@@ -30,4 +31,5 @@
   angular.module('rigApp.dataService', ['rigApp.utils']);
   angular.module('rigApp.mainScreen', ['rigApp.utils']);
   angular.module('rigApp.blocks', ['rigApp.utils']);
+  angular.module('rigApp.workflow', ['rigApp.utils']);
 })();
