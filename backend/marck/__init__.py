@@ -16,7 +16,7 @@ class SparkContext(object):
 
     @staticmethod
     def wholeTextFiles(dirpath):
-        return RDD(('file:/' + os.path.realpath(os.path.join(dirpath, fname)),
+        return RDD(('file:' + os.path.realpath(os.path.join(dirpath, fname)),
                     open(os.path.join(dirpath, fname)).read())
                    for fname in os.listdir(dirpath))
 
@@ -35,7 +35,8 @@ class RDD(list):
         self.is_cached = False
 
     def cache(self):
-        self.is_cache = True
+        self.is_cached = True
+        return self
 
     def collect(self):
         return list(self)
@@ -51,6 +52,12 @@ class RDD(list):
 
     def reduce(self, f):
         return functools.reduce(f, self)
+
+    def reduceByKey(self, f):
+        bykey = {}
+        for k, v in self:
+            bykey.setdefault(k, []).append(v)
+        return [(k, reduce(f, v)) for k, v in bykey.items()]
 
     def sortBy(self, key, ascending=True):
         sortd = RDD(self)
