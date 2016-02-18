@@ -19,10 +19,11 @@
 
     this.getData = function() {
       Messagebus.publish('dataUpdate',$http.get(encodeURI(this.backendURL + this.exampleQuery)));
+      this.getSuggestions(this.currentTopOfStack,this.lastMainScreenInteraction);
     }.bind(this);
 
     this.getSuggestions = function(topOfStack,mainScreenInteraction) {
-      Messagebus.publish('blockSuggestions',$http.post(encodeURI(this.backendURL + this.suggestionsPath)),
+      Messagebus.publish('newSuggestions',$http.post(encodeURI(this.backendURL + this.suggestionsPath)),
         {
           'topOfStack': topOfStack,
           'mainScreenInteraction': mainScreenInteraction

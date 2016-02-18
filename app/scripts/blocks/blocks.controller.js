@@ -11,7 +11,9 @@
     };
 
     Messagebus.subscribe('newSuggestions',function(event,suggestions) {
-      this.suggestedBlocks = suggestions;
+      suggestions.then(function(sugg){ 
+        this.suggestedBlocks = sugg.data.suggestions;
+      }.bind(this));
     }.bind(this));
     
   }
