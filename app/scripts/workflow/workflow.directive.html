@@ -1,5 +1,5 @@
 <div class="workflowbar">
-	<button class="run-workflow">execute workflow</button>
+	<button class="run-workflow" ng-click="wf.execute()">execute workflow</button>
 	<div class="workflow-items">
 		<div ng-repeat="wb in wf.workflowBlocks track by $index" class="workflow-block">
 			<div class="workflow-block-title">{{ wb.out }}</div>

@@ -1,7 +1,9 @@
 <div class="blocksbar">
 	<div ng-repeat="sb in bl.suggestedBlocks" class="block">
 		<div class="block-title">
-			{{ sb.out }} <!--{{ sb.parameter }}-->
+			{{ sb.out }} 
+			<span class="parameters">{{ sb.mainScreenInteraction }}</span>
+			<span class="parameters">{{ sb.topOfStack }}</span>
 		</div>
 		<button ng-click="bl.planBlock(sb)">plan</button>
 	</div>
