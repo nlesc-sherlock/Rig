@@ -76,15 +76,15 @@ def suggestions():
     with codecs.open(os.path.join(APP_STATIC, 'suggestions.json'), 'rb', encoding='utf-8') as f:
         suggestions = json.load(f)
 
-    if request.values.keys() == []:
-        interaction_type = None
-        task_name = 'source'
-    else:
-        top_of_stack = request.values.get('topOfStack')
-        interaction = request.values.get('mainScreenInteraction')
-
     data = json.loads(request.data)
     print data
+
+    interaction_type = data.get('mainScreenInteraction', {}).get('type')
+    # TODO: what does top of stack look like? Where to find the action name
+    task_name = data.get('topOfStack', {}).get('', 'source')
+
+    print interaction_type
+    print task_name
 
     for s in suggestions:
         s['topOfStack'] = data.get('topOfStack')
@@ -123,5 +123,5 @@ if __name__ == '__main__':
     VARS['original'] = pd.concat(dfs)
 
     print('Finished loading data')
-    
+
     app.run(host='0.0.0.0', debug=True)
