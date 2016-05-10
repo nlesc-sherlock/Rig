@@ -5,7 +5,9 @@
     "type": "git",
     "url": "https://github.com/nlesc-sherlock/Rig"
   },
-  "dependencies": {},
+  "dependencies": {
+    "serve-static": "~1.10.2"
+  },
   "devDependencies": {
     "codeclimate-test-reporter": "0.0.4",
     "grunt": "^0.4.1",
