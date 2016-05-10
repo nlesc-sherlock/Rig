@@ -4,7 +4,7 @@
 
 ### Front end
 
-Install nodejs. See instructions at http://nodejs.org/
+Install nodejs. See instructions at http://nodejs.org/. Make sure to install nodejs, nodejs-legacy and npm.
 
 Install bower and grunt-cli globally:
 ```
