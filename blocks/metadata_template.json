@@ -1,5 +1,4 @@
 {
-  # Type must always be block
   "type": "block",
   "arguments": [
     "arg1",
