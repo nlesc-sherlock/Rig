@@ -1,0 +1,11 @@
+{
+  # Type must always be block
+  "type": "block",
+  "arguments": [
+    "arg1",
+    "arg2"
+  ],
+  "input": "data_in",
+  "output": "data_out",
+  "blockname": "description of the block"
+}
