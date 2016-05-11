@@ -8,6 +8,9 @@ test/reports
 e2e/reports
 
 ## Non-project files:
+# iPyton notebooks
+.ipynb_checkpoints/
+
 # exvim
 .exvim.project*
 project.exvim
