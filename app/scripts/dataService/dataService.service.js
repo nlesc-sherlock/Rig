@@ -15,7 +15,7 @@
     this.ready = deferred.promise;
 
     this.init = function() {
-      $timeout(this.getData,10);
+      $timeout(this.getData,100);
     };
 
     this.getData = function() {
@@ -24,11 +24,12 @@
     }.bind(this);
 
     this.getSuggestions = function(topOfStack,mainScreenInteraction) {
-      Messagebus.publish('newSuggestions',$http.post(encodeURI(this.backendURL + this.suggestionsPath),
-        {
-          'topOfStack': this.currentTopOfStack,
-          'mainScreenInteraction': this.lastMainScreenInteraction
-        }));
+      Messagebus.publish('newSuggestions',
+        $http.post(encodeURI(this.backendURL + this.suggestionsPath),
+                   {
+                     'topOfStack': this.currentTopOfStack,
+                     'mainScreenInteraction': this.lastMainScreenInteraction
+                   }));
     }.bind(this);
 
     Messagebus.subscribe('mainScreenInteraction',function(event,interactionSpec) {

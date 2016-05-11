@@ -5,6 +5,8 @@ import codecs
 import os
 import sys
 import json
+import nbformat as nbf
+import nbformat.v4 as nbf4
 
 try:
     from ConfigParser import SafeConfigParser, Error
@@ -66,8 +68,6 @@ def query():
                     'data': [{'records': records}]})
 
 
-@app.route('/suggestions', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def suggestions():
     """Return task suggestions based on task name and user interaction.
     """
@@ -99,6 +99,31 @@ def suggestions():
         suggestions = [s for s in suggestions if interaction_type in s['interaction']]
 
     return jsonify({'suggestions': suggestions})
+
+
+@app.route('/suggestions', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def suggestions2():
+    """Return task suggestions based on task name and user interaction.
+    """
+    blocks = []
+    for fn in os.listdir('./blocks'):
+        if os.path.isfile('./blocks/' + fn) and fn.endswith('.ipynb'):
+            with open('./blocks/' + fn, 'r') as f:
+                notebook = nbf.read(f, 4)
+            for cell in notebook['cells']:
+                metadata = cell.get('metadata', {})
+                if metadata.get('type', '') == 'block':
+                    blocks.append({ "notebook": fn,
+                                    "name": metadata.get('blockname', 'untitled'),
+                                    "block": cell })
+
+    params = json.loads(request.data)
+    mainScreenInteraction = params.get('mainScreenInteraction', {})
+    topOfStack = params.get('topOfStack', {})
+    # TODO: filter suggestions by parameters
+    print blocks
+    return jsonify({ 'suggestions': blocks })
 
 
 if __name__ == '__main__':
