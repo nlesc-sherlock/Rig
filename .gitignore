@@ -17,3 +17,4 @@ project.exvim
 
 .rigrc
 *.pyc
+*/.ipynb_checkpoints
