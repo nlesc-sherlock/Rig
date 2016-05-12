@@ -3,7 +3,7 @@
 
   function rigMainScreen() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       templateUrl: 'scripts/mainScreen/mainScreen.directive.html',
       controller: 'MainScreenController',
       controllerAs: 'ms'
