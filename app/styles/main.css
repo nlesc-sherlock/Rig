@@ -3,6 +3,12 @@ html, body {
 	width: 100%;
 }
 
+/* widgets */
+#progress-bar {
+	width: 100%;
+	height: 2%;
+	background-color: #00ADEF;
+}
 #view-menu-buttons {
 	  width: 40%;
 	  height: 2%;
@@ -11,161 +17,18 @@ html, body {
 		display: flex;
 }
 
-/* widgets */
-#progress-bar {
+#main-inventory {
+	padding-top: 0px;
 	width: 100%;
-	height: 2%;
-	background-color: #00ADEF;
-}
-
-#rig-logo {
-	width: auto;
-	height: auto;
-}
-
-#rig-icon {
-	width: 100%;
-	padding: 10%;
-}
-
-#nlesc-logo {
-	width: 50%;
-	height: 100%;
-}
-
-#nlesc-icon {
-	height: 90%;
-	border: 2px solid white;
-}
-
-#search-box {
-	width: 50%;
-	height: 100%;
-}
-
-#workflow {
-	width: 100%;
-	height: 80%;
-	background: repeating-linear-gradient(
-		45deg,
-		#FFFFFF,
-		#FFFFFF 10px,
-		#EEF6FF 10px,
-		#EEF6FF 20px
-	);
-	display: -webkit-flex; /* Safari */
-	display: flex;
-	-webkit-flex-direction: column; /* Safari */
-	flex-direction: column;
-	overflow-y: scroll;
-	/*overflow-x: scroll;*/
-}
-
-#data-table {
-	width: 100%;
-	height: 90%;
-	overflow-y: scroll;
-	overflow-x: scroll;
-}
-
-#message-log {
-	width: 100%;
-}
-
-#blocks {
-	width: 100%;
-	height: 20%;
-}
-
-.blocksbar {
-	overflow-x: scroll;
-	overflow-y: scroll;
+	height: 96%;
+	min-height: 96%;
 	display: -webkit-flex; /* Safari */
 	display: flex;
 	-webkit-flex-direction: row; /* Safari */
 	flex-direction: row;
 }
 
-/* layout containers */
-#mainx {
-	padding-top: 25px;
-	width: 100%;
-	height: 98%;
-	min-height: 100%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-	-webkit-flex-direction: column; /* Safari */
-	flex-direction: column;
-}
-
-#main-body {
-	width: 100%;
-	height: 100%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-}
-
-#left-bar {
-	width: 15%;
-	height: 98%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-	-webkit-flex-direction: column; /* Safari */
-	flex-direction: column;
-}
-
-#main-bar {
-	width: 85%;
-	height: 98%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-	-webkit-flex-direction: column; /* Safari */
-	flex-direction: column;
-}
-
-#main-top {
-	width: 100%;
-	height: 80%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-	-webkit-flex-direction: space-between; /* Safari */
-	flex-direction: space-between;
-}
-
-#main-left-bar {
-	height: 100%;
-	width: 90%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-	-webkit-flex-direction: column; /* Safari */
-	flex-direction: column;
-}
-
-#main-right-bar {
-	width: 10%;
-	height: 100%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-	-webkit-flex-direction: column-reverse; /* Safari */
-	flex-direction: column-reverse;
-}
-
-#main-header {
-	width: 100%;
-	height: 10%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-}
-
-#main-inventory {
-	padding-top: 25px;
-	width: 100%;
-	height: 98%;
-	display: -webkit-flex; /* Safari */
-	display: flex;
-}
-
-#left-bar-inventory {
+#left-inventory {
 	width: 15%;
 	height: 98%;
 	display: -webkit-flex; /* Safari */
@@ -184,7 +47,7 @@ html, body {
 	padding: 10%;
 }
 
-#main-bar-inventory {
+#right-inventory {
 	width: 85%;
 	height: 98%;
 	display: -webkit-flex; /* Safari */
@@ -206,8 +69,151 @@ html, body {
 #data-table-inventory {
 	width: 100%;
 	height: 90%;
-	overflow-y: scroll;
-	overflow-x: scroll;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+#main-wrangler {
+	padding-top: 0px;
+	width: 100%;
+	height: 96%;
+	min-height: 96%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: row; /* Safari */
+	flex-direction: row;
+}
+
+#left-wrangler {
+	width: 15%;
+	height: 100%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+}
+
+#rig-logo-wrangler {
+	width: auto;
+	height: auto;
+}
+
+#rig-icon-wrangler {
+	width: 100%;
+	padding: 10%;
+}
+
+#workflow-wrangler {
+	width: 100%;
+	height: 80%;
+	background: repeating-linear-gradient(
+		45deg,
+		#FFFFFF,
+		#FFFFFF 10px,
+		#EEF6FF 10px,
+		#EEF6FF 20px
+	);
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+	overflow-y: auto;
+	/*overflow-x: scroll;*/
+}
+
+#right-wrangler {
+	width: 85%;
+	height: 100vh;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+}
+
+#right-top-wrangler {
+	width: 100%;
+	height: 80%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: space-between; /* Safari */
+	flex-direction: space-between;
+}
+
+#right-top-left-wrangler {
+	height: 100%;
+	width: 90%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction: column;
+}
+
+#right-top-left-top-wrangler {
+	width: 100%;
+	height: 10%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: row; /* Safari */
+	flex-direction: row;
+}
+
+#blocks-wrangler {
+	width: 100%;
+	height: 20%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: row; /* Safari */
+	flex-direction: row;
+}
+
+#nlesc-logo-wrangler {
+	width: 50%;
+	height: 100%;
+}
+
+#nlesc-icon-wrangler {
+	height: 90%;
+	border: 2px solid white;
+}
+
+#search-box-wrangler {
+	width: 50%;
+	height: 100%;
+}
+
+
+#data-table-wrangler {
+	width: 100%;
+	height: 90%;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+
+#right-top-right-wrangler {
+	width: 10%;
+	height: 100%;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column-reverse; /* Safari */
+	flex-direction: column-reverse;
+}
+
+#message-log {
+	width: 100%;
+	height: 100%;
+}
+
+
+.blocksbar {
+	/*overflow-x: scroll;
+	overflow-y: scroll;*/
+	overflow-x: auto;
+	overflow-y: auto;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: row; /* Safari */
+	flex-direction: row;
 }
 
 .maintable-cell {

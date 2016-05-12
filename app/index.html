@@ -24,8 +24,11 @@
     <![endif]-->
 
   <!-- Add your site or application content here -->
-  <rig-view-menu></rig-view-menu>
-  <div ng-view></div>
+  <div id="rig-window">
+    <div id="progress-bar"></div>
+    <rig-view-menu></rig-view-menu>
+    <div ng-view></div>
+  </div>
   <!-- build:js(.) scripts/oldieshim.js -->
   <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
