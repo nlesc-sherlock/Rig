@@ -11,10 +11,17 @@
       Messagebus.publish('topOfStack',block);
     }.bind(this));
 
+    Messagebus.subscribe('generatedWorkflow',function(event,notebook) {
+      notebook.then(function(nb){ 
+        console.log('generated workflow');
+        console.log(nb);
+      }.bind(this));
+    }.bind(this));
+
     this.execute = function() {
-      console.log('execute');
+      console.log('generate workflow');
       console.log(this.workflowBlocks);
-      window.alert('EXECUTING WORKFLOW\nPLEASE WAIT\n\n' + JSON.stringify(this.workflowBlocks,null,'    '));
+      Messagebus.publish('generateWorkflow',this.workflowBlocks);
     }
   }
   angular.module('rigApp.workflow')

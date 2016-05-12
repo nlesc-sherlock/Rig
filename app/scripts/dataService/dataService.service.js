@@ -7,6 +7,7 @@
 
     this.exampleQuery = '/records/original/0/100';
     this.suggestionsPath = '/suggestions';
+    this.generatePath = '/generate';
 
     this.currentTopOfStack = {};
     this.lastMainScreenInteraction = {};
@@ -32,6 +33,14 @@
                    }));
     }.bind(this);
 
+    this.generateWorkflow = function(workflowSpec) {
+      Messagebus.publish('generatedWorkflow',
+        $http.post(encodeURI(this.backendURL + this.generatePath),
+                   {
+                     'workflow': workflowSpec
+                   }));
+    }.bind(this);
+
     Messagebus.subscribe('mainScreenInteraction',function(event,interactionSpec) {
       console.log(interactionSpec);
       this.lastMainScreenInteraction = interactionSpec;
@@ -42,6 +51,11 @@
       console.log(block);
       this.currentTopOfStack = block;
       this.getSuggestions(this.currentTopOfStack,this.lastMainScreenInteraction);
+    }.bind(this));
+
+    Messagebus.subscribe('generateWorkflow',function(event,workflowSpec) {
+      console.log(workflowSpec);
+      this.generateWorkflow(workflowSpec);
     }.bind(this));
 
   }
