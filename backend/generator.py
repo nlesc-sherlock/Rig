@@ -39,6 +39,8 @@ def generate_notebook(workflow, output_path):
         cells_out.append(nbf4.new_code_cell(cell["source"]))
         last_output = metadata.get('output', None)
 
+    last_cell = 'final_output = %s.collect()' % last_output
+    cells_out.append(nbf4.new_code_cell(last_cell))
     nb_out['cells'] = cells_out
     with open(output_path, 'w') as f:
         nbf.write(nb_out, f, version=4)
