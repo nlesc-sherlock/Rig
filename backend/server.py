@@ -68,42 +68,15 @@ def query():
                     'data': [{'records': records}]})
 
 
-def suggestions():
-    """Return task suggestions based on task name and user interaction.
-    """
-    print request.values.keys()
-
-    with codecs.open(os.path.join(APP_STATIC, 'suggestions.json'), 'rb', encoding='utf-8') as f:
-        suggestions = json.load(f)
-
-    data = json.loads(request.data)
-    print data
-
-    interaction_type = data.get('mainScreenInteraction', {}).get('type')
-    # TODO: what does top of stack look like? Where to find the action name
-    task_name = data.get('topOfStack', {}).get('', 'source')
-
-    print interaction_type
-    print task_name
-
-    for s in suggestions:
-#        s['topOfStack'] = data.get('topOfStack')
-        s['mainScreenInteraction'] = data.get('mainScreenInteraction')
-
-    if not task_name == 'all':
-        suggestions = [s for s in suggestions if task_name == s['in']]
-
-    if interaction_type is not None:
-#        suggestions = [s for s in suggestions if s['interaction'] == []]
-#    else:
-        suggestions = [s for s in suggestions if interaction_type in s['interaction']]
-
-    return jsonify({'suggestions': suggestions})
-
+@app.route('/generate', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def generate():
+    params = json.loads(request.data)
+    generate_notebook(params.get('workflow',[]), './workflow')
 
 @app.route('/suggestions', methods=['POST'])
 @cross_origin(supports_credentials=True)
-def suggestions2():
+def suggestions():
     """Return task suggestions based on task name and user interaction.
     """
     blocks = []
