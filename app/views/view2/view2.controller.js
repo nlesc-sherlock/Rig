@@ -5,7 +5,7 @@
 
     this.changeView = function(value) {
       $location.path(value);
-      $timeout(DataService.getInventory,500);
+      $timeout(DataService.getInventory,100);
     };
 
     Messagebus.subscribe('changingView1',function(event) {
