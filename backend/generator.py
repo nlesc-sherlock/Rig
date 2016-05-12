@@ -1,7 +1,7 @@
 import nbformat as nbf
 import nbformat.v4 as nbf4
 
-def generate_notebook(workflow, output_path):
+def generate_notebook(workflow,  input_path, output_path):
     #Define output
     nb_out = nbf4.new_notebook()
     cells_out = []
@@ -12,8 +12,18 @@ def generate_notebook(workflow, output_path):
         preamble = nbf.read(f, 4)
         cells_out.extend(preamble['cells'])
 
+    # Add Load  data (sequence file)
+    code = "input_path = '%s'" % input_path
+    cells_out.append(nbf4.new_code_cell(code))
+
+    load_file = "./blocks/load_sequence.ipynb"
+    with open(load_file, 'r') as f:
+        load = nbf.read(f, 4)
+    cells_out.extend(load['cells'])
+    last_output = "data"
+
+
     #Add all cells in the list
-    last_output = None
     for block in workflow:
         name = block["name"]
         cell = block['block']

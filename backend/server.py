@@ -92,7 +92,8 @@ def setdata():
 @cross_origin(supports_credentials=True)
 def generate():
     params = json.loads(request.data)
-    generated_file = generate_notebook(params.get('workflow',[]), './workflow/generated_notebook.ipynb')
+    input_path = "/data/enron_mail.seq"
+    generated_file = generate_notebook(params.get('workflow',[]), input_path, './workflow/generated_notebook.ipynb')
     # TODO: return actual URL of generated notebook
     print generated_file
     return jsonify({ "notebook_url": generated_file })
