@@ -1,0 +1,10 @@
+<div class="inventorytable">
+<table class="table table-bordered table-condensed table-hover table-striped">
+	<tr>
+		<th ng-repeat="col in is.data.columns" class="maintable-cell">{{ col }}</th>
+	</tr>
+	<tr ng-repeat="item in is.data.data">
+		<td ng-repeat="(key,value) in item" class="maintable-cell" ng-click="is.clickTableRow($parent.$index)" ng-class="{selected: is.rowschecked[$parent.$index].selected}"> {{ value }}</td>
+	</tr>
+</table>
+</div>

@@ -24,12 +24,22 @@ CORS(app)
 # Variable bindings. Maps strings to DataFrames.
 VARS = {}
 
+selectedDatasetId = 0
 
 @app.route('/')
 @cross_origin(supports_credentials=True)
 def hello():
     return jsonify({ 'columns':['#records'],
                      'data':[{'#records': VARS['original'].shape[0]}]})
+
+@app.route('/inventory')
+@cross_origin(supports_credentials=True)
+def inventory():
+    # Set selected dataset by the default to the first one
+    return jsonify({ 'selected' : selectedDatasetId,
+                     'columns':['Data Set Name', 'Information'],
+                     'data':[{'Data Set Name':'Dataset 1', 'Information': 'Information data set 1'},
+                             {'Data Set Name':'Dataset 2', 'Information': 'Information data set 2'}]})
 
 
 @app.route('/records/<input>/<int:start>/<int:end>')
@@ -68,6 +78,15 @@ def query():
     return jsonify({'columns': ['records'],
                     'data': [{'records': records}]})
 
+@app.route('/setdata', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def setdata():
+    global selectedDatasetId
+    data = json.loads(request.data)
+    oldSelectedDatasetId = selectedDatasetId
+    selectedDatasetId = data['index']['index']
+    print 'Changing selected data set from '  + str(oldSelectedDatasetId) + ' to ' + str(selectedDatasetId)
+    return jsonify({'status': 'OK'})
 
 @app.route('/generate', methods=['POST'])
 @cross_origin(supports_credentials=True)

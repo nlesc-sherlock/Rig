@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Sherlock Rig</title>
+  <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -23,30 +24,10 @@
     <![endif]-->
 
   <!-- Add your site or application content here -->
-
-  <div id="mainx">
+  <div id="rig-window">
     <div id="progress-bar"></div>
-    <div id="main-body">
-      <div id="left-bar">
-        <div id="rig-logo"><img src="images/noun_95045_cc.png" id="rig-icon"/></div>
-        <div id="workflow"><rig-workflow></rig-workflow></div>
-      </div>
-      <div id="main-bar">
-        <div id="main-top">
-          <div id="main-left-bar">
-            <div id="main-header">
-              <div id="nlesc-logo"><img src="images/ESCIENCE_logo_C_nl_cyanblack.jpg" id="nlesc-icon"/></div>
-              <div id="search-box"><!--search box--></div>
-            </div>
-            <div id="data-table"><rig-main-screen></rig-main-screen></div>
-          </div>
-          <div id="main-right-bar">
-            <div id="message-log"><!--message log--></div>
-          </div>
-        </div>
-        <div id="blocks"><rig-blocks></rig-blocks></div>
-      </div>
-    </div>
+    <rig-view-menu></rig-view-menu>
+    <div ng-view></div>
   </div>
   <!-- build:js(.) scripts/oldieshim.js -->
   <!--[if lt IE 9]>
@@ -76,12 +57,21 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/utils/messagebus.service.js"></script>
   <script src="scripts/dataService/dataService.service.js"></script>
+  <script src="scripts/viewMenu/viewMenu.controller.js"></script>
+  <script src="scripts/viewMenu/viewMenu.directive.js"></script>
   <script src="scripts/mainScreen/mainScreen.controller.js"></script>
   <script src="scripts/mainScreen/mainScreen.directive.js"></script>
   <script src="scripts/blocks/blocks.controller.js"></script>
   <script src="scripts/blocks/blocks.directive.js"></script>
   <script src="scripts/workflow/workflow.controller.js"></script>
   <script src="scripts/workflow/workflow.directive.js"></script>
+  <script src="scripts/inventoryScreen/inventoryScreen.controller.js"></script>
+  <script src="scripts/inventoryScreen/inventoryScreen.directive.js"></script>
+
+  <script src="views/view1/view1.config.js"></script>
+  <script src="views/view1/view1.controller.js"></script>
+  <script src="views/view2/view2.config.js"></script>
+  <script src="views/view2/view2.controller.js"></script>
 
   <!-- endbuild -->
 </body>
