@@ -31,7 +31,7 @@
       $routeProvider.otherwise({redirectTo: '/view1'});
     }])
     .run(function($timeout, DataService, Messagebus){
-      $timeout(DataService.getInventory,500);
+      $timeout(DataService.getInventory,100);
       // DataService.getInventory();
       // $timeout(function(){
       //   // When initialization is done, we ask for the inventory data
