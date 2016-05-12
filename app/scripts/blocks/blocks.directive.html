@@ -5,7 +5,7 @@
 			<span class="parameters">{{ sb.mainScreenInteraction }}</span>
 			<span class="parameters">{{ sb.topOfStack }}</span>
 			<div ng-repeat="arg in sb.block.metadata.arguments" class="argument">
-				{{ arg }}: <input type="text"></input>
+				{{ arg }}: <input type="text" ng-model="sb.block.metadata.values[arg]"></input>
 			</div>
 		</div>
 		<button ng-click="bl.planBlock(sb)">plan</button>
