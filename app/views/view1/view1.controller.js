@@ -9,9 +9,9 @@
     };
 
     Messagebus.subscribe('changingView2',function(event) {
-      // console.log('changing view');
-      Messagebus.publish('updatingViewMenu',{'viewId':'view2'});
+      console.log('Changing to view2');
       this.changeView('view2');
+      Messagebus.publish('updatingViewMenu',{'viewId':'view2'});
     }.bind(this));
   }
   angular.module('rigApp.view1')
