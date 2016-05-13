@@ -22,7 +22,7 @@
     // };
 
     this.getInventory = function() {
-      Messagebus.publish('dataInventory',$http.get(encodeURI(this.backendURL + this.inventoryQuery)));
+      Messagebus.publish('inventoryUpdate',$http.get(encodeURI(this.backendURL + this.inventoryQuery)));
     }.bind(this);
 
     this.getData = function() {
@@ -47,9 +47,9 @@
                    }));
     }.bind(this);
 
-    Messagebus.subscribe('inventoryInteraction',function(event,interactionIndex) {
-      console.log(interactionIndex);
-      $http.post(encodeURI(this.backendURL + this.setDataPath), {'index': interactionIndex});
+    Messagebus.subscribe('inventoryInteraction',function(event,d) {
+      // console.log(interactionIndex);
+      $http.post(encodeURI(this.backendURL + this.setDataPath), {'index': d['index']});
       Messagebus.publish('selectedDataSetUpdatedInServer');
     }.bind(this));
 

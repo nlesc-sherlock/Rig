@@ -1,11 +1,13 @@
 (function() {
   'use strict';
 
-  function InventoryScreenController($location, Messagebus) {
+  function InventoryScreenController($timeout, Messagebus) {
+
     this.data = { };
     this.rowschecked = [];
+    this.requireNewData = false;
 
-    Messagebus.subscribe('dataInventory',function(event,p) {
+    Messagebus.subscribe('inventoryUpdate',function(event,p) {
       p.then(function(r) {
         this.data = r.data;
         this.rowschecked = [];
@@ -19,25 +21,32 @@
 
 
     this.clickTableRow = function(rowIndex) {
-      // console.log("Pressing data set " + rowIndex)
-      var selectedRow = -1;
+      // Update the selection in the table
       this.rowschecked.forEach(function(element){
         if (rowIndex == element.index){
           element.selected = true;
-          selectedRow = element.index;
         }else{
           element.selected = false;
         }
       });
-      Messagebus.publish('inventoryInteraction',{'index':rowIndex});
+
+      // Inform that an interactions has been done
+      Messagebus.publish('inventoryInteraction', {'index':rowIndex});
+
+      //Update the variable that indicated the selected data set
+      this.data.selected = rowIndex;
+      this.requireNewData = (rowIndex != this.data.selected);
     };
 
-    Messagebus.subscribe('selectedDataSetUpdatedInServer',function(event,p) {
-      console.log('server updated')
-      Messagebus.publish('changingView2');
+    Messagebus.subscribe('selectedDataSetUpdatedInServer',function() {
+      if (this.requireNewData == true) {
+        //TODO: We need to change the displayed data in the wrangler before swithing to it
+      }
+      // Add timeout to let the user see that, if he has changed the selected row, it has been applied
+      $timeout(function() {
+        Messagebus.publish('changingToWrangler');
+      }, 300);
     }.bind(this));
-
-
   }
   angular.module('rigApp.inventoryScreen')
     .controller('InventoryScreenController', InventoryScreenController);

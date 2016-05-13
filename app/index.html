@@ -26,8 +26,7 @@
   <!-- Add your site or application content here -->
   <div id="rig-window">
     <div id="progress-bar"></div>
-    <rig-view-menu></rig-view-menu>
-    <div ng-view></div>
+    <rig-selector></rig-selector>
   </div>
   <!-- build:js(.) scripts/oldieshim.js -->
   <!--[if lt IE 9]>
@@ -57,8 +56,6 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/utils/messagebus.service.js"></script>
   <script src="scripts/dataService/dataService.service.js"></script>
-  <script src="scripts/viewMenu/viewMenu.controller.js"></script>
-  <script src="scripts/viewMenu/viewMenu.directive.js"></script>
   <script src="scripts/mainScreen/mainScreen.controller.js"></script>
   <script src="scripts/mainScreen/mainScreen.directive.js"></script>
   <script src="scripts/blocks/blocks.controller.js"></script>
@@ -67,12 +64,12 @@
   <script src="scripts/workflow/workflow.directive.js"></script>
   <script src="scripts/inventoryScreen/inventoryScreen.controller.js"></script>
   <script src="scripts/inventoryScreen/inventoryScreen.directive.js"></script>
-
-  <script src="views/view1/view1.config.js"></script>
-  <script src="views/view1/view1.controller.js"></script>
-  <script src="views/view2/view2.config.js"></script>
-  <script src="views/view2/view2.controller.js"></script>
-
+  <script src="scripts/selector/selector.controller.js"></script>
+  <script src="scripts/selector/selector.directive.js"></script>
+  <script src="scripts/inventory/inventory.controller.js"></script>
+  <script src="scripts/inventory/inventory.directive.js"></script>
+  <script src="scripts/wrangler/wrangler.controller.js"></script>
+  <script src="scripts/wrangler/wrangler.directive.js"></script>
   <!-- endbuild -->
 </body>
 
