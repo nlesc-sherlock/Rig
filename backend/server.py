@@ -84,7 +84,7 @@ def setdata():
     global selectedDatasetId
     data = json.loads(request.data)
     oldSelectedDatasetId = selectedDatasetId
-    selectedDatasetId = data['index']['index']
+    selectedDatasetId = data['index']
     print 'Changing selected data set from '  + str(oldSelectedDatasetId) + ' to ' + str(selectedDatasetId)
     return jsonify({'status': 'OK'})
 
